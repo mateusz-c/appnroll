@@ -5,6 +5,7 @@ require("dotenv").config({
 const {
   NODE_ENV,
   SITE_URL,
+  GITHUB_TOKEN,
   URL: NETLIFY_SITE_URL = SITE_URL,
   DEPLOY_PRIME_URL: NETLIFY_DEPLOY_URL = NETLIFY_SITE_URL,
   CONTEXT: NETLIFY_ENV = NODE_ENV,
@@ -13,6 +14,7 @@ const netlifyProduction = NETLIFY_ENV === "production"
 const siteUrl = netlifyProduction
   ? SITE_URL || NETLIFY_SITE_URL
   : NETLIFY_DEPLOY_URL
+
 
 module.exports = {
   siteMetadata: {
@@ -76,6 +78,37 @@ module.exports = {
     },
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-typescript`,
+    {
+      resolve: "gatsby-source-graphql",
+      options: {
+        typeName: "GitHub",
+        fieldName: "github",
+        url: "https://api.github.com/graphql",
+        // HTTP headers
+        headers: {
+          // Learn about environment variables: https://gatsby.dev/env-vars
+          Authorization: `Bearer ${GITHUB_TOKEN}`,
+        },
+        // HTTP headers alternatively accepts a function (allows async)
+        // headers: async () => {
+        //   return {
+        //     Authorization: await getAuthorizationToken(),
+        //   }
+        // },
+        // Additional options to pass to node-fetch
+        fetchOptions: {},
+      },
+    },
+    {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: `Quicksand`,
+          },
+        ],
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

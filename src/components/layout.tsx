@@ -12,32 +12,34 @@ import { Normalize } from "styled-normalize"
 import theme from "../theming/theme"
 import Footer from "./base/footer/footer.component"
 import Header from "./base/header/header.component"
+import GlobalStyle from "./global-style.component"
 
 const ContentWrapper = styled.div`
   margin: 0 auto;
-  max-width: 960px;
+  max-width: 1190px;
   padding: 0 1.0875rem 1.45rem;
 `
 
 const Layout = ({ children }: { children: ReactChild | ReactChild[] }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
+  // const data = useStaticQuery(graphql`
+  //   query SiteTitleQuery {
+  //     site {
+  //       siteMetadata {
+  //         title
+  //       }
+  //     }
+  //   }
+  // `)
 
   return (
     <ThemeProvider theme={theme}>
       <>
         <Normalize />
-        <Header siteTitle={data.site.siteMetadata.title} />
+        {/* <Header siteTitle={data.site.siteMetadata.title} /> */}
+        <GlobalStyle />
         <ContentWrapper>
           <main>{children}</main>
-          <Footer />
+          {/* <Footer /> */}
         </ContentWrapper>
       </>
     </ThemeProvider>
