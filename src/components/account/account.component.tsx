@@ -45,8 +45,6 @@ const AccountImage = styled.div`
   width: 102px;
 `
 
-const AccountInfoWrapper = styled.div``
-
 const AccountName = styled.h1`
   color: #243c56;
   font-size: 20px;
@@ -102,9 +100,9 @@ const Account: AppFunctionComponent<Props> = ({
   return (
     <AccountWrapper>
       <AccountImage>
-        <img src={avatarUrl} />
+        <img src={avatarUrl} alt={`${name} avatar`} />
       </AccountImage>
-      <AccountInfoWrapper>
+      <div>
         <AccountName>{name}’s repositories</AccountName>
         <AccountSubname>{description}</AccountSubname>
         <AccountData>
@@ -123,7 +121,7 @@ const Account: AppFunctionComponent<Props> = ({
             </StyledLink>
           </AccountInfo>
         </AccountData>
-      </AccountInfoWrapper>
+      </div>
     </AccountWrapper>
   )
 }

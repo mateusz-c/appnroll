@@ -66,7 +66,7 @@ const IndexPage: AppFunctionComponent<Props> = ({
         repositories.edges.filter(repo => {
           const includesLanguage = selectedLanguage
             ? repo.node.primaryLanguage.name ===
-              languages[parseInt(selectedLanguage)]
+              languages[parseInt(selectedLanguage, 10)]
             : true
           const includesText = repo.node.name
             .toLowerCase()
@@ -80,12 +80,12 @@ const IndexPage: AppFunctionComponent<Props> = ({
     }
   }
 
-  const languageChange = (optionValue: string) => {
-    setSelectedLanguage(optionValue)
+  const languageChange = (newOptionValue: string) => {
+    setSelectedLanguage(newOptionValue)
   }
 
-  const searchChange = (searchText: string) => {
-    setSearchText(searchText)
+  const searchChange = (newSearchText: string) => {
+    setSearchText(newSearchText)
   }
 
   const clearFilters = () => {
@@ -109,7 +109,11 @@ const IndexPage: AppFunctionComponent<Props> = ({
       <RepoWrapper>
         {reposToShow.length > 0
           ? reposToShow.map(repo => (
-              <Repo repo={repo.node} login={organization.login} />
+              <Repo
+                key={repo.node.id}
+                repo={repo.node}
+                login={organization.login}
+              />
             ))
           : "No repositories found"}
       </RepoWrapper>

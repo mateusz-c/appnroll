@@ -84,6 +84,14 @@ const Filters: AppFunctionComponent<Props> = ({
   selectedLanguage,
   clearFilters,
 }) => {
+  const searchHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    searchChange(e.target.value)
+  }
+
+  const languageChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    languageChange(e.target.value)
+  }
+
   return (
     <FiltersWrapper>
       <FieldWrapper>
@@ -91,21 +99,25 @@ const Filters: AppFunctionComponent<Props> = ({
           placeholder="Search"
           type="text"
           value={searchText}
-          onChange={e => searchChange(e.target.value)}
+          onChange={searchHandler}
         />
       </FieldWrapper>
       <FieldWrapper selected={selectedLanguage}>
-        <select
-          value={selectedLanguage}
-          name=""
-          id=""
-          onChange={e => languageChange(e.target.value)}
-        >
-          <option value="" disabled selected hidden>
+        {/* tslint:disable-next-line:react-a11y-no-onchange */}
+        <select value={selectedLanguage} onChange={languageChangeHandler}>
+          <option value="" disabled hidden role="option" aria-selected={false}>
             Select language
           </option>
+
           {languages.map((language, i) => (
-            <option value={i}>{language}</option>
+            <option
+              key={language}
+              value={i}
+              role="option"
+              aria-selected={i.toString() === selectedLanguage}
+            >
+              {language}
+            </option>
           ))}
         </select>
       </FieldWrapper>
