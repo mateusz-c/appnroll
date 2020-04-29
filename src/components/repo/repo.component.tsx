@@ -28,20 +28,21 @@ interface Props {
   readonly repo: RepoNode
   readonly login: String
 }
+
 interface RepoLangColorProps {
   langColor: CSSObject
 }
 
 const RepoBox = styled.div`
+  border: 1px solid #e3e5e8;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
+  height: 349px;
+  margin-bottom: 15px;
   overflow: hidden;
   position: relative;
   width: calc(100% / 3 - 10px);
-  margin-bottom: 15px;
-  height: 349px;
-  border: 1px solid #e3e5e8;
-  border-radius: 5px;
 
   :not(:nth-of-type(3n)) {
     margin-right: 15px;
@@ -50,76 +51,75 @@ const RepoBox = styled.div`
 
 const RepoMain = styled.div`
   background: #ffffff;
-  padding: 39px 33px;
   flex: 1;
+  padding: 39px 33px;
 
-  ::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 6px;
+  &::before {
     background-color: ${(props: RepoLangColorProps) =>
       props.langColor || "transparent"};
+    content: "";
+    height: 6px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
   }
 `
 
 const RepoName = styled.div`
-  font-size: 24px;
   color: #243c56;
-  letter-spacing: 0;
+  font-size: 24px;
   line-height: 1.5;
   margin-bottom: 16px;
 `
 
 const RepoDescription = styled.p`
-  font-size: 16px;
   color: #7d8ca1;
+  font-size: 16px;
   line-height: 24px;
   margin-bottom: 0;
 `
 
 const RepoBottom = styled.div`
-  height: 86px;
-  flex-shrink: 0;
-  background: rgba(39, 124, 220, 0.04);
-  display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 35px 30px;
-  font-size: 12px;
+  background: rgba(39, 124, 220, 0.04);
   color: #243c56;
+  display: flex;
+  flex-shrink: 0;
+  font-size: 12px;
+  height: 86px;
+  justify-content: space-between;
   letter-spacing: 0.32px;
+  padding: 35px 30px;
 `
 
 const RepoLang = styled.div`
-  display: flex;
   align-items: center;
+  display: flex;
 
-  ::before {
-    content: "";
-    display: inline-block;
-    width: 16px;
-    height: 16px;
+  &::before {
     background-color: ${(props: RepoLangColorProps) =>
       props.langColor || "transparent"};
     border-radius: 50%;
+    content: "";
+    display: inline-block;
+    height: 16px;
     margin-right: 4px;
+    width: 16px;
   }
 `
 
 const RepoInfo = styled.div`
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: flex-end;
   padding-top: 1px;
 `
 
 const RepoInfoItem = styled.div`
-  margin-left: 28px;
-  display: flex;
   align-items: center;
+  display: flex;
+  margin-left: 28px;
 
   svg {
     margin-right: 8px;
@@ -128,14 +128,14 @@ const RepoInfoItem = styled.div`
 `
 
 const StyledLink = styled.a`
-  font-size: 14px;
+  align-items: center;
   color: #0062ff;
+  display: flex;
+  font-size: 14px;
+  font-weight: 400;
   letter-spacing: 0.16px;
   line-height: 18px;
-  display: flex;
-  align-items: center;
   text-decoration: none;
-  font-weight: 400;
 
   svg {
     margin-right: 10px;

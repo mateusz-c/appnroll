@@ -5,7 +5,7 @@ import { RepoNode } from "../repo/repo.component"
 import LinkIcon from "../../images/link.svg"
 import LocationIcon from "../../images/location.svg"
 
-interface RepositoryNode {
+export interface RepositoryNode {
   readonly node: RepoNode
 }
 
@@ -27,56 +27,56 @@ interface Props {
 }
 
 const AccountWrapper = styled.div`
-  display: flex;
   align-items: center;
+  display: flex;
   margin-bottom: 40px;
   margin-top: 70px;
 `
 
 const AccountImage = styled.div`
-  height: 102px;
-  width: 102px;
-  border-radius: 5px;
+  align-items: center;
   background: #0f1436;
   border: 1px solid #e3e5e8;
+  border-radius: 5px;
   display: flex;
+  height: 102px;
   justify-content: center;
-  align-items: center;
   margin-right: 21px;
+  width: 102px;
 `
 
 const AccountInfoWrapper = styled.div``
 
 const AccountName = styled.h1`
-  font-size: 20px;
-  line-height: 1;
   color: #243c56;
-  margin: 0 0 8px;
+  font-size: 20px;
   font-weight: 500;
+  line-height: 1;
+  margin: 0 0 8px;
 `
 
 const AccountSubname = styled.h3`
-  font-size: 14px;
   color: #818fa3;
-  line-height: 1;
+  font-size: 14px;
+  font-weight: 300;
   letter-spacing: 0.16px;
-  line-height: 18px;
+  line-height: 1;
   font-weight: 400;
   margin: 0 0 8px;
-  font-weight: 300;
 `
+
 const AccountData = styled.div`
   display: flex;
 `
 
 const AccountInfo = styled.span`
-  font-size: 14px;
+  align-items: center;
   color: #243c56;
+  display: flex;
+  font-size: 14px;
   letter-spacing: 0.16px;
   line-height: 18px;
   margin-right: 24px;
-  display: flex;
-  align-items: center;
 
   svg {
     margin-right: 4px;
@@ -84,12 +84,12 @@ const AccountInfo = styled.span`
 `
 
 const StyledLink = styled.a`
-  font-size: 14px;
   color: #243c56;
+  font-size: 14px;
+  font-weight: 400;
   letter-spacing: 0.16px;
   line-height: 18px;
   text-decoration: none;
-  font-weight: 400;
 
   &:hover {
     text-decoration: underline;
