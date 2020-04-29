@@ -70,13 +70,14 @@ const RepoName = styled.div`
   color: #243c56;
   letter-spacing: 0;
   line-height: 1.5;
+  margin-bottom: 16px;
 `
 
 const RepoDescription = styled.p`
   font-size: 16px;
   color: #7d8ca1;
-  letter-spacing: 0;
   line-height: 24px;
+  margin-bottom: 0;
 `
 
 const RepoBottom = styled.div`
