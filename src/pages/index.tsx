@@ -5,7 +5,7 @@ import styled, { CSSObject } from "styled-components"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import AppFunctionComponent from "../types/app-function-component.interface"
-import Account from "../components/account/account.component"
+import Account, { Organization } from "../components/account/account.component"
 import Repo, { RepoNode } from "../components/repo/repo.component"
 
 const Content = styled.div`
@@ -18,25 +18,10 @@ const RepoWrapper = styled.div`
   flex-wrap: wrap;
 `
 
-interface RepositoryNode {
-  readonly node: RepoNode
-}
-
 interface Props {
   readonly data: {
     readonly github: {
-      readonly organization: {
-        readonly name: string
-        readonly avatarUrl: string
-        readonly description: string
-        readonly email: string
-        readonly location: string
-        readonly login: string
-        readonly url: string
-        readonly repositories: {
-          edges: RepositoryNode[]
-        }
-      }
+      readonly organization: Organization
     }
   }
 }
@@ -80,7 +65,7 @@ export const query = graphql`
         description
         email
         location
-        url
+        websiteUrl
         repositories(first: 100) {
           edges {
             node {

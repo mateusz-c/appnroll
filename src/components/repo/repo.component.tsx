@@ -4,7 +4,7 @@ import styled, { CSSObject } from "styled-components"
 import StarsIcon from "../../images/star.svg"
 import PersonIcon from "../../images/person.svg"
 import ForkIcon from "../../images/forks.svg"
-import LinkIcon from "../../images/external_link.svg"
+import ExternalLinkIcon from "../../images/external_link.svg"
 
 export interface RepoNode {
   readonly description: string
@@ -135,6 +135,7 @@ const StyledLink = styled.a`
   display: flex;
   align-items: center;
   text-decoration: none;
+  font-weight: 400;
 
   svg {
     margin-right: 10px;
@@ -162,7 +163,7 @@ const Repo: AppFunctionComponent<Props> = ({
       <RepoMain langColor={primaryLanguage.color}>
         <RepoName>{name}</RepoName>
         <StyledLink href={url} target="_blank" rel="noopener noreferrer">
-          <LinkIcon />
+          <ExternalLinkIcon />
           {login}/{name}
         </StyledLink>
         <RepoDescription>{description}</RepoDescription>
