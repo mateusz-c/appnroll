@@ -4,7 +4,7 @@
   </a>
 </p>
 <h1 align="center">
-  Solution for [App'n'roll's Recruitment Exercise](https://github.com/Appnroll/appnroll-recruitment-exercise)
+  Solution for App'n'roll's Recruitment Exercise(https://github.com/Appnroll/appnroll-recruitment-exercise)
 </h1>
 
 
